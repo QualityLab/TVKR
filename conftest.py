@@ -36,7 +36,7 @@ def app(request, config):
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
-        if fixture in not None:
+        if fixture is not None:
             fixture.session.ensure_logout()
             fixture.destroy()
     request.addfinalizer(fin)
