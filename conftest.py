@@ -37,7 +37,6 @@ def app(request, config):
 def stop(request):
     def fin():
         if fixture is not None:
-            fixture.session.ensure_logout()
             fixture.destroy()
     request.addfinalizer(fin)
     return fixture
