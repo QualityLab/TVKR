@@ -16,4 +16,4 @@ class SearchHelper:
     def get_result_message(self):
         wd = self.app.wd
         wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("h1.cnt__ttl").text == "Результаты поиска")
-        return wd.find_element_by_css_selector("strong.search_result").text
+        return wd.find_element_by_css_selector("strong.search_result, strong.search__found").text
