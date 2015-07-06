@@ -1,0 +1,133 @@
+{
+  "type": "script",
+  "seleniumVersion": "2",
+  "formatVersion": 2,
+  "steps": [
+    {
+      "type": "get",
+      "url": "http://tvkinoradio.ru/catalog"
+    },
+    {
+      "type": "waitForTextPresent",
+      "text": "Каталог оборудования"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Оборудование"
+      },
+      "text": "Оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Аудио"
+      },
+      "text": "Аудио"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Видео"
+      },
+      "text": "Видео"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Радиовещание"
+      },
+      "text": "Радиовещание"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "IT оборудование"
+      },
+      "text": "IT оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Видеомонтаж"
+      },
+      "text": "Видеомонтаж"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Профессиональные носители"
+      },
+      "text": "Профессиональные носители"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Измерительное оборудование"
+      },
+      "text": "Измерительное оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Системы служебной связи"
+      },
+      "text": "Системы служебной связи"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Кабели, разъемы"
+      },
+      "text": "Кабели, разъемы"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Осветительное оборудование"
+      },
+      "text": "Осветительное оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Оборудование DVB-C и DVB-T"
+      },
+      "text": "Оборудование DVB-C и DVB-T"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Студийная мебель"
+      },
+      "text": "Студийная мебель"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "link text",
+        "value": "Аренда"
+      },
+      "text": "Аренда"
+    }
+  ],
+  "data": {
+    "configs": {},
+    "source": "none"
+  },
+  "inputs": [],
+  "timeoutSeconds": 60
+}

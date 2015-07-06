@@ -1,0 +1,125 @@
+{
+  "type": "script",
+  "seleniumVersion": "2",
+  "formatVersion": 2,
+  "steps": [
+    {
+      "type": "get",
+      "url": "http://tvkinoradio.ru/catalog"
+    },
+    {
+      "type": "waitForTextPresent",
+      "text": "Каталог оборудования"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "css selector",
+        "value": "a.catalog__ttl-link"
+      },
+      "text": "Аудио"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[1]/div[2]/div/a"
+      },
+      "text": "Видео"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[2]/div[1]/div/a"
+      },
+      "text": "Радиовещание"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[2]/div[2]/div/a"
+      },
+      "text": "IT оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[3]/div[1]/div/a"
+      },
+      "text": "Видеомонтаж"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[3]/div[2]/div/a"
+      },
+      "text": "Профессиональные носители"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[4]/div[1]/div/a"
+      },
+      "text": "Измерительное оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[4]/div[2]/div/a"
+      },
+      "text": "Системы служебной связи"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[5]/div[1]/div/a"
+      },
+      "text": "Кабели, разъемы"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[5]/div[2]/div/a"
+      },
+      "text": "Осветительное оборудование"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[6]/div[1]/div/a"
+      },
+      "text": "Оборудование DVB-C и DVB-T"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[6]/div[2]/div/a"
+      },
+      "text": "Студийная мебель"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='catalog']/div[7]/div"
+      },
+      "text": "Аренда"
+    }
+  ],
+  "data": {
+    "configs": {},
+    "source": "none"
+  },
+  "inputs": [],
+  "timeoutSeconds": 60
+}

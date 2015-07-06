@@ -1,0 +1,71 @@
+{
+  "type": "script",
+  "seleniumVersion": "2",
+  "formatVersion": 2,
+  "steps": [
+    {
+      "type": "get",
+      "url": "http://tvkinoradio.ru/"
+    },
+    {
+      "type": "setElementText",
+      "locator": {
+        "type": "id",
+        "value": "header-search"
+      },
+      "text": "ОБОРУДОВАНИЕ"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": "input.btn_search"
+      }
+    },
+    {
+      "type": "waitForTextPresent",
+      "text": "Результаты поиска"
+    },
+    {
+      "type": "storeText",
+      "locator": {
+        "type": "css selector",
+        "value": "strong.search__found"
+      },
+      "variable": "result_count"
+    },
+    {
+      "type": "setElementText",
+      "locator": {
+        "type": "id",
+        "value": "header-search"
+      },
+      "text": "оборудование"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": "input.btn_search"
+      }
+    },
+    {
+      "type": "waitForTextPresent",
+      "text": "Результаты поиска"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "css selector",
+        "value": "strong.search__found"
+      },
+      "text": "${result_count}"
+    }
+  ],
+  "data": {
+    "configs": {},
+    "source": "none"
+  },
+  "inputs": [],
+  "timeoutSeconds": 60
+}

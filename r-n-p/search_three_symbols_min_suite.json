@@ -1,0 +1,24 @@
+{
+  "type": "suite",
+  "seleniumVersion": "2",
+  "formatVersion": 1,
+  "scripts": [
+    {
+      "where": "local",
+      "path": "empty_query.json"
+    },
+    {
+      "where": "local",
+      "path": "one_symbol.json"
+    },
+    {
+      "where": "local",
+      "path": "two_symbols.json"
+    },
+    {
+      "where": "local",
+      "path": "three_symbols.json"
+    }
+  ],
+  "shareState": false
+}

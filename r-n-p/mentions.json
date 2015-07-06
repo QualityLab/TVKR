@@ -1,0 +1,94 @@
+{
+  "type": "script",
+  "seleniumVersion": "2",
+  "formatVersion": 2,
+  "steps": [
+    {
+      "type": "get",
+      "url": "http://tvkinoradio.ru/catalog/audio_17/mikrofoni_41/studijnie-mikrofoni_881/lentochnie_1069/product_14783_ntr"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": "a.tabset__link.comments__count"
+      }
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Интересный микрофон! Давно его ждали"
+    },
+    {
+      "type": "verifyText",
+      "locator": {
+        "type": "id",
+        "value": "add-review-link"
+      },
+      "text": "Оставьте свой отзыв"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "id",
+        "value": "add-review-link"
+      }
+    },
+    {
+      "type": "waitForElementPresent",
+      "locator": {
+        "type": "css selector",
+        "value": "div.popup__box.popup__box-enter"
+      }
+    },
+    {
+      "type": "setElementText",
+      "locator": {
+        "type": "id",
+        "value": "UserForm_email"
+      },
+      "text": "1@guerrillamail.com"
+    },
+    {
+      "type": "setElementText",
+      "locator": {
+        "type": "id",
+        "value": "UserForm_password"
+      },
+      "text": "11111"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "id",
+        "value": "submit_link"
+      }
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": "a.tabset__link.comments__count"
+      }
+    },
+    {
+      "type": "verifyElementPresent",
+      "locator": {
+        "type": "xpath",
+        "value": "//html/body"
+      }
+    },
+    {
+      "type": "verifyElementPresent",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@class='form__bottom']/button"
+      }
+    }
+  ],
+  "data": {
+    "configs": {},
+    "source": "none"
+  },
+  "inputs": [],
+  "timeoutSeconds": 60
+}

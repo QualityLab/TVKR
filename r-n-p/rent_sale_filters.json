@@ -1,0 +1,66 @@
+{
+  "type": "script",
+  "seleniumVersion": "2",
+  "formatVersion": 2,
+  "steps": [
+    {
+      "type": "get",
+      "url": "http://tvkinoradio.ru/catalog/video_13/videokameri-i-kamkorderi_128/"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@id='offerType']/div[2]/div"
+      }
+    },
+    {
+      "type": "verifyCurrentUrl",
+      "url": "http://tvkinoradio.ru/catalog/video_13/videokameri-i-kamkorderi_128/?offerType=rent"
+    },
+    {
+      "type": "waitForTextPresent",
+      "text": "Видеокамеры и камкордеры"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Средняя цена аренды"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@id='offerType']/div[3]/div"
+      }
+    },
+    {
+      "type": "verifyCurrentUrl",
+      "url": "http://tvkinoradio.ru/catalog/video_13/videokameri-i-kamkorderi_128/?offerType=sale"
+    },
+    {
+      "type": "waitForTextPresent",
+      "text": "Видеокамеры и камкордеры"
+    },
+    {
+      "type": "verifyTextPresent",
+      "text": "Средняя цена продажи"
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "xpath",
+        "value": "//div[@id='offerType']/div[1]/div"
+      }
+    },
+    {
+      "type": "verifyCurrentUrl",
+      "url": "http://tvkinoradio.ru/catalog/video_13/videokameri-i-kamkorderi_128/"
+    }
+  ],
+  "data": {
+    "configs": {},
+    "source": "none"
+  },
+  "inputs": [],
+  "timeoutSeconds": 60
+}

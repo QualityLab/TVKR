@@ -1,0 +1,36 @@
+{
+  "type": "suite",
+  "seleniumVersion": "2",
+  "formatVersion": 1,
+  "scripts": [
+    {
+      "where": "local",
+      "path": "empty_string_asterisk.json"
+    },
+    {
+      "where": "local",
+      "path": "following_asterisk.json"
+    },
+    {
+      "where": "local",
+      "path": "following_qm.json"
+    },
+    {
+      "where": "local",
+      "path": "leading_asterisk.json"
+    },
+    {
+      "where": "local",
+      "path": "leading_qm.json"
+    },
+    {
+      "where": "local",
+      "path": "middle_asterisk.json"
+    },
+    {
+      "where": "local",
+      "path": "middle_qm.json"
+    }
+  ],
+  "shareState": false
+}
