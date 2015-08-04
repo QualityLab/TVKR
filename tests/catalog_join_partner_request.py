@@ -10,7 +10,7 @@ def is_alert_present(wd):
     except:
         return False
 
-class (unittest.TestCase):
+class catalog_join_partner_request(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
