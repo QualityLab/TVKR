@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.common.action_chains import ActionChains
+import time, unittest
+
+def is_alert_present(wd):
+    try:
+        wd.switch_to_alert().text
+        return True
+    except:
+        return False
+
+class community_group_search(unittest.TestCase):
+    def setUp(self):
+        self.wd = WebDriver()
+        self.wd.implicitly_wait(60)
+    
+    def test_community_group_search(self):
+        success = True
+        wd = self.wd
+        wd.get("http://build_2015_7_8_17.build.tvkinoradio.itcreativoff.com/community")
+        wd.find_element_by_id("search_text").click()
+        wd.find_element_by_id("search_text").clear()
+        wd.find_element_by_id("search_text").send_keys("tvkinoradio")
+        wd.find_element_by_xpath("//div[@class='form_row']//button[.='Найти']").click()
+        wd.find_element_by_link_text("TVKINORADIO").click()
+        self.assertTrue(success)
+    
+    def tearDown(self):
+        self.wd.quit()
+
+if __name__ == '__main__':
+    unittest.main()
