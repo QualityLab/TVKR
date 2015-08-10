@@ -2,7 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
-from baseurl import Baseurl
+from .baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -28,7 +28,7 @@ class profile_groups_displayed_properly(unittest.TestCase):
         wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("111111")
         wd.find_element_by_id("submit_link").click()
-        wd.get(str(Baseurl.baseurl) + group/my/#tab01")
+        wd.get(str(Baseurl.baseurl) + "group/my/#tab01")
         if not (len(wd.find_elements_by_xpath("//div[@id='tab01']//a[.='Барахолка']")) !=0):
             success = False
             print("verifyElementPresent failed")

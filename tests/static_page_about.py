@@ -19,7 +19,7 @@ class static_page_about(unittest.TestCase):
     def test_static_page_about(self):
         success = True
         wd = self.wd
-        wd.get(str(Baseurl.baseurl)
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_xpath("//div[@class='ftr__nav']//a[.='О проекте']").click()
         if not (len(wd.find_elements_by_xpath("//div[@class='cnt']//h1[.='О проекте']")) != 0):
             success = False

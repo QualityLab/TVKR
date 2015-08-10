@@ -19,11 +19,11 @@ class social_links_footer(unittest.TestCase):
     def test_social_links_footer(self):
         success = True
         wd = self.wd
-        wd.get(str(Baseurl.baseurl)
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_css_selector("a.ftr__social-link.ftr__social-link_fb").click()
-        wd.get(str(Baseurl.baseurl)
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_css_selector("a.ftr__social-link.ftr__social-link_vk").click()
-        wd.get(str(Baseurl.baseurl)
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_css_selector("a.ftr__social-link.ftr__social-link_tw").click()
         self.assertTrue(success)
     
