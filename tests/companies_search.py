@@ -19,4 +19,4 @@ def test_companies_search(app, query, expected):
     if len(company_links) > 0:
         wait(wd, 30).until(EC.staleness_of(company_links[0]))
     wait(wd, 30).until(lambda s: wd.find_element_by_link_text(expected)).click()
-    # тут надо добавить ожидание загрузки страницы компании
+    wait(wd, 30).until(lambda s: wd.find_element_by_css_selector(".company-box"))
