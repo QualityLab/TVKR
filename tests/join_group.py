@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class join_group(unittest.TestCase):
     def test_join_group(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com/login")
+        wd.get(str(Baseurl.baseurl) + "login")
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()
         wd.find_element_by_id("UserForm_email").send_keys("z947384@yandex.ru")
@@ -26,7 +27,7 @@ class join_group(unittest.TestCase):
         wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("111111")
         wd.find_element_by_id("submit_link").click()
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com/group/251")
+        wd.get(str(Baseurl.baseurl) + "group/251")
         wd.find_element_by_link_text("Вступить в группу").click()
         wd.find_element_by_link_text("Сообщества").click()
         if not (len(wd.find_elements_by_link_text("ОНЛАЙН-КОНФЕРЕНЦИИ")) != 0):

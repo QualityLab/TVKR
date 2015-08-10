@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class community_navigation_and_wall_present(unittest.TestCase):
     def test_community_navigation_and_wall_present(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_8_17.build.tvkinoradio.itcreativoff.com")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Сообщество").click()
         if not (len(wd.find_elements_by_link_text("Виктория Черепанова")) != 0):
             success = False

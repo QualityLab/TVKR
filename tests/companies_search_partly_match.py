@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class companies_search_partly_match(unittest.TestCase):
     def test_companies_search_partly_match(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_8_17.build.tvkinoradio.itcreativoff.com/companies")
+        wd.get(str(Baseurl.baseurl) + "companies")
         wd.find_element_by_id("keywords").click()
         wd.find_element_by_id("keywords").clear()
         wd.find_element_by_id("keywords").send_keys("русские студии")

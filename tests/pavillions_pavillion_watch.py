@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class pavillions_pavillion_watch(unittest.TestCase):
     def test_pavillions_pavillion_watch(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/pavilions/73")
+        wd.get(str(Baseurl.baseurl) + "pavilions/73")
         wd.find_element_by_xpath("//a[@class='fancybox']").click()
         wd.find_element_by_xpath("//a[@id='fancybox-close']").click()
         wd.find_element_by_link_text("Технические характеристики").click()

@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class brands_navigation_plus_photo_video(unittest.TestCase):
     def test_brands_navigation_plus_photo_video(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Оборудование").click()
         wd.find_element_by_link_text("Производители").click()
         wd.find_element_by_xpath("//a[@href='/catalog/productBrand?mode=logos']").click()

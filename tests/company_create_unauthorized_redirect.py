@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class company_create_unauthorized_redirect(unittest.TestCase):
     def test_company_create_unauthorized_redirect(self):
         success = True
         wd = self.wd
-        wd.get("http://build_r_2015_7_30.build.tvkinoradio.itcreativoff.com/companies")
+        wd.get(str(Baseurl.baseurl) + "companies")
         wd.find_element_by_link_text("Создать компанию").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()

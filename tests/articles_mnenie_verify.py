@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class articles_mnenie_verify(unittest.TestCase):
     def test_articles_mnenie_verify(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/article/category7")
+        wd.get(str(Baseurl.baseurl) + "article/category7")
         if wd.find_element_by_xpath("//div[@class='news news_list']/div[1]/a[@href='/article/category7']").text != "Мнение":
             success = False
             print("verifyText failed")

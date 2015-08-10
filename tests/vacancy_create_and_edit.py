@@ -2,6 +2,8 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
+
 
 def is_alert_present(wd):
     try:
@@ -18,7 +20,7 @@ class vacancy_create_and_edit(unittest.TestCase):
     def test_vacancy_create_and_edit(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_28_17.build.tvkinoradio.itcreativoff.com/resume")
+        wd.get(str(Baseurl.baseurl) + "resume")
         wd.find_element_by_link_text("Разместить вакансию").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()

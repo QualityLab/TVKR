@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class one_of_two_match_vacancy_search(unittest.TestCase):
     def test_1_of_2_match_vacancy_search(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/job")
+        wd.get(str(Baseurl.baseurl) + "job")
         wd.find_element_by_id("search_text").click()
         wd.find_element_by_id("search_text").clear()
         wd.find_element_by_id("search_text").send_keys("монтажа")

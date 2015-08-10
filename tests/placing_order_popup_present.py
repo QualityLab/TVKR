@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class placing_order_popup_present(unittest.TestCase):
     def test_placing_order_popup_present(self):
         success = True
         wd = self.wd
-        wd.get("http://build_r_2015_7_30.build.tvkinoradio.itcreativoff.com/catalog/video_13/videokameri-i-kamkorderi_128/xdcam_460/product_12700_pxw-x200")
+        wd.get(str(Baseurl.baseurl) + "catalog/video_13/videokameri-i-kamkorderi_128/xdcam_460/product_12700_pxw-x200")
         wd.find_element_by_link_text("Войти").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()

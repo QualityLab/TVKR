@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class events_invite_from_profile(unittest.TestCase):
     def test_events_invite_from_profile(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/events")
+        wd.get(str(Baseurl.baseurl) + "events")
         wd.find_element_by_xpath("//div[@class='events__block']/div[3]//a[@class='event__img']").click()
         wd.find_element_by_id("join_link").click()
         wd.find_element_by_id("UserForm_email").click()

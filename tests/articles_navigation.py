@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -13,12 +14,12 @@ def is_alert_present(wd):
 class articles_navigation(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver()
-        self.wd.implicitly_wait(60)
+        self.wd.implicitly_wait(30)
     
     def test_articles_navigation(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Статьи").click()
         wd.find_element_by_xpath("//ul[@id='yw0']//a[.='Обзоры']").click()
         wd.find_element_by_xpath("//ul[@id='yw0']//a[.='Мнение']").click()

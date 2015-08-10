@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class profile_video_can_be_added_and_played(unittest.TestCase):
     def test_profile_video_can_be_added_and_played(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_22_17.build.tvkinoradio.itcreativoff.com/")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Войти").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()

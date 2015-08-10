@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class catalog_join_partner_request(unittest.TestCase):
     def test_(self):
         success = True
         wd = self.wd
-        wd.get("http://build_r_2015_7_30.build.tvkinoradio.itcreativoff.com/join")
+        wd.get(str(Baseurl.baseurl) + "join")
         wd.find_element_by_link_text("Регистрация").click()
         wd.find_element_by_link_text("Авторизоваться").click()
         wd.find_element_by_id("UserForm_email").click()

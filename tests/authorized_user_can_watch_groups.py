@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class authorized_user_can_watch_groups(unittest.TestCase):
     def test_authorized_user_can_watch_groups(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com/group/253/members")
+        wd.get(str(Baseurl.baseurl) + "group/253/members")
         wd.find_element_by_link_text("Фотографии").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()

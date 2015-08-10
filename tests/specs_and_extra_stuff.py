@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class specs_and_extra_stuff(unittest.TestCase):
     def test_specs_and_extra_stuff(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/catalog/audio_17/mikrofoni_41/radiosistemi_219/product_12878_em-9046-su")
+        wd.get(str(Baseurl.baseurl) + "catalog/audio_17/mikrofoni_41/radiosistemi_219/product_12878_em-9046-su")
         if not (len(wd.find_elements_by_link_text("Спецификации")) != 0):
             success = False
             print("verifyElementPresent failed")

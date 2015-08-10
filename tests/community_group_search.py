@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class community_group_search(unittest.TestCase):
     def test_community_group_search(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_8_17.build.tvkinoradio.itcreativoff.com/community")
+        wd.get(str(Baseurl.baseurl) + "community")
         wd.find_element_by_id("search_text").click()
         wd.find_element_by_id("search_text").clear()
         wd.find_element_by_id("search_text").send_keys("tvkinoradio")

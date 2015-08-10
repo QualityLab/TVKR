@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class mentions(unittest.TestCase):
     def test_mentions(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/catalog/audio_17/mikrofoni_41/studijnie-mikrofoni_881/lentochnie_1069/product_14783_ntr")
+        wd.get(str(Baseurl.baseurl) + "catalog/audio_17/mikrofoni_41/studijnie-mikrofoni_881/lentochnie_1069/product_14783_ntr")
         wd.find_element_by_css_selector("a.tabset__link.comments__count").click()
         if not ("Интересный микрофон! Давно его ждали" in wd.find_element_by_tag_name("html").text):
             success = False

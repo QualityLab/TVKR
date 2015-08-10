@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,11 +19,11 @@ class social_links_footer(unittest.TestCase):
     def test_social_links_footer(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_28_17.build.tvkinoradio.itcreativoff.com")
+        wd.get(str(Baseurl.baseurl)
         wd.find_element_by_css_selector("a.ftr__social-link.ftr__social-link_fb").click()
-        wd.get("http://build_2015_7_28_17.build.tvkinoradio.itcreativoff.com")
+        wd.get(str(Baseurl.baseurl)
         wd.find_element_by_css_selector("a.ftr__social-link.ftr__social-link_vk").click()
-        wd.get("http://build_2015_7_28_17.build.tvkinoradio.itcreativoff.com")
+        wd.get(str(Baseurl.baseurl)
         wd.find_element_by_css_selector("a.ftr__social-link.ftr__social-link_tw").click()
         self.assertTrue(success)
     

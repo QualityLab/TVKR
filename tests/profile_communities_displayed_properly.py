@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class profile_communities_displayed_properly(unittest.TestCase):
     def test_profile_communities_displayed_properly(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_22_17.build.tvkinoradio.itcreativoff.com/login")
+        wd.get(str(Baseurl.baseurl) + "login")
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()
         wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com")

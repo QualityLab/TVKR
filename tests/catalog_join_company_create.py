@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class catalog_join_company_create(unittest.TestCase):
     def test_catalog_join_company_create(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/catalog")
+        wd.get(str(Baseurl.baseurl) + "catalog")
         wd.find_element_by_link_text("Присоединяйтесь").click()
         wd.find_element_by_id("registration_button").click()
         wd.find_element_by_link_text("Авторизоваться").click()
@@ -30,7 +31,7 @@ class catalog_join_company_create(unittest.TestCase):
         wd.find_element_by_id("UserForm_password").send_keys("11111")
         wd.find_element_by_id("submit_link").click()
         wd.find_element_by_link_text("Создать профиль").click()
-        if wd.current_url != "http://tvkinoradio.ru/company/create":
+        if wd.current_url != str(Baseurl.baseurl) + "company/create":
             success = False
             print("verifyCurrentUrl failed")
         self.assertTrue(success)

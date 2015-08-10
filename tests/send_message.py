@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class send_message(unittest.TestCase):
     def test_send_message(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Войти").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()
@@ -27,7 +28,7 @@ class send_message(unittest.TestCase):
         wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("11111")
         wd.find_element_by_id("submit_link").click()
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com/user/user/view?id=2391")
+        wd.get(str(Baseurl.baseurl) + "user/user/view?id=2391")
         wd.find_element_by_link_text("Отправить сообщение").click()
         wd.find_element_by_id("Message_body").click()
         wd.find_element_by_id("Message_body").clear()

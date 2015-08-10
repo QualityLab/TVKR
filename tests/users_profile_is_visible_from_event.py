@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class users_profile_is_visible_from_event(unittest.TestCase):
     def test_users_profile_is_visible_from_event(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/events")
+        wd.get(str(Baseurl.baseurl) + "events")
         wd.find_element_by_css_selector("div.event__ttl > a").click()
         wd.find_element_by_css_selector("a.post__list-person").click()
         self.assertTrue(success)

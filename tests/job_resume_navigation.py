@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class job_resume_navigation(unittest.TestCase):
     def test_job_resume_navigation(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Работа").click()
         wd.find_element_by_link_text("Поиск сотрудников").click()
         wd.find_element_by_link_text("Поиск работы").click()

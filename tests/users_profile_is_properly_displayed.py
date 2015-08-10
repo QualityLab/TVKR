@@ -2,6 +2,8 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
+
 
 def is_alert_present(wd):
     try:
@@ -18,7 +20,7 @@ class users_profile_is_properly_displayed(unittest.TestCase):
     def test_users_profile_is_properly_displayed(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Войти").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()

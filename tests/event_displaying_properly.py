@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class event_displaying_properly(unittest.TestCase):
     def test_event_displaying_properly(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/events")
+        wd.get(str(Baseurl.baseurl) + "events")
         if not (len(wd.find_elements_by_xpath("//div[@class='events']/div[1]//img")) != 0):
             success = False
             print("verifyElementPresent failed")

@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,9 +19,9 @@ class community_login_redirect(unittest.TestCase):
     def test_community_login_redirect(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com/group/253/members")
+        wd.get(str(Baseurl.baseurl) + "group/253/members")
         wd.find_element_by_link_text("Фотографии").click()
-        wd.get("http://build_2015_7_9_17.build.tvkinoradio.itcreativoff.com/group/253/members")
+        wd.get(str(Baseurl.baseurl) + "group/253/members")
         wd.find_element_by_xpath("//ul[@id='yw0']//strong[.=' Видео']").click()
         self.assertTrue(success)
     

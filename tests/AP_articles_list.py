@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class AP_articles_list(unittest.TestCase):
     def test_AP_articles_list(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_28_17.build.tvkinoradio.itcreativoff.com")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Войти").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()
@@ -27,7 +28,7 @@ class AP_articles_list(unittest.TestCase):
         wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("test12")
         wd.find_element_by_id("submit_link").click()
-        wd.get("http://build_2015_7_28_17.build.tvkinoradio.itcreativoff.com/admin/article/index")
+        wd.get(str(Baseurl.baseurl) + "admin/article/index")
         if not (len(wd.find_elements_by_xpath("//h1[.='Статьи']")) != 0):
             success = False
             print("verifyElementPresent failed")

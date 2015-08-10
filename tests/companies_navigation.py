@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class companies_navigation(unittest.TestCase):
     def test_companies_navigation(self):
         success = True
         wd = self.wd
-        wd.get("http://build_2015_7_8_17.build.tvkinoradio.itcreativoff.com/")
+        wd.get(str(Baseurl.baseurl))
         wd.find_element_by_link_text("Компании").click()
         if wd.find_element_by_css_selector("h1.cnt__ttl").text != "Компании":
             success = False

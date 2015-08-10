@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from baseurl import Baseurl
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class second_level_categories_present(unittest.TestCase):
     def test_second_level_categories_present(self):
         success = True
         wd = self.wd
-        wd.get("http://tvkinoradio.ru/catalog")
+        wd.get(str(Baseurl.baseurl) + "catalog")
         if wd.find_element_by_css_selector("a.catalog__link").text != "Микрофоны":
             success = False
             print("verifyText failed")
