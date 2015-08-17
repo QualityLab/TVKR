@@ -3,7 +3,6 @@ __author__ = 'alexei'
 import pytest
 import json
 import os.path
-import ftputil
 from fixture.application import Application
 
 fixture = None
