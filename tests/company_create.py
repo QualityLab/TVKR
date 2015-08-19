@@ -12,8 +12,6 @@ def test_company_create(app):
     wd.find_element_by_xpath("//input[@id='Company_title']").send_keys("Sample company")
     wd.find_element_by_xpath("//li//span[.='Оборудование']").click()
     #попытка переключиться во фрейм wysiwyg и ввести текст
-    editor = wd.find_element_by_xpath("//iframe[@class='cke_wysiwyg_frame cke_reset']")
-    wd.switch_to_frame().frame(editor)
-    wd.find_element_by_tag("body").send_keys("Sample description")
-    
-    
+    editor = wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("iframe.cke_wysiwyg_frame"))
+    wd.switch_to_frame(editor)
+    wd.find_element_by_css_selector("body").send_keys("Sample description")
