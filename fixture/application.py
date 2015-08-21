@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from .search import SearchHelper
 from .companies_search import CompanySearchHelper
 from selenium.webdriver.support.wait import WebDriverWait as wait
@@ -6,15 +7,18 @@ from selenium.webdriver.support.wait import WebDriverWait as wait
 
 class Application:
 
-    def __init__(self, browser, config):
-        if browser == "firefox":
-            self.wd = webdriver.Firefox()
-        elif browser == "chrome":
-            self.wd = webdriver.Chrome()
-        elif browser == "ie":
-            self.wd = webdriver.Ie()
+    def __init__(self, browser, remote, config):
+        if remote:
+            self.wd = webdriver.Remote(command_executor=remote, desired_capabilities={"browserName": browser})
         else:
-            raise ValueError("Unrecognized browser %s" % browser)
+            if browser == "firefox":
+                self.wd = webdriver.Firefox()
+            elif browser == "chrome":
+                self.wd = webdriver.Chrome()
+            elif browser == "ie":
+                self.wd = webdriver.Ie()
+            else:
+                raise ValueError("Unrecognized browser %s" % browser)
         self.config = config
         self.base_url = config['web']['baseUrl']
         self.search = SearchHelper(self)

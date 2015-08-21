@@ -27,8 +27,9 @@ def config(request):
 def app(request, config):
     global fixture
     browser = request.config.getoption("--browser")
+    remote = request.config.getoption("--remote")
     if fixture is None or not fixture.is_valid():
-        fixture = Application(browser=browser, config=config)
+        fixture = Application(browser=browser, remote=remote, config=config)
     return fixture
 
 
@@ -43,5 +44,6 @@ def stop(request):
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
+    parser.addoption("--remote", action="store", default=None)
     parser.addoption("--target", action="store", default="target.json")
 
