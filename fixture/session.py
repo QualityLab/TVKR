@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver.common.action_chains import ActionChains
-
 from selenium.webdriver.support.wait import WebDriverWait as wait
+
+
+class User:
+
+    def __init__(self, username, password, real_name):
+        self.username = username
+        self.password = password
+        self.real_name = real_name
 
 
 class SessionHelper:
