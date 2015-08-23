@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from .session import SessionHelper
 from .search import SearchHelper
 from .companies_search import CompanySearchHelper
 from selenium.webdriver.support.wait import WebDriverWait as wait
@@ -21,8 +21,11 @@ class Application:
                 raise ValueError("Unrecognized browser %s" % browser)
         self.config = config
         self.base_url = config['web']['baseUrl']
+        self.session = SessionHelper(self)
         self.search = SearchHelper(self)
         self.companies_search = CompanySearchHelper(self)
+
+        self.open_home_page()
         
     def is_valid(self):
         try:
@@ -31,13 +34,14 @@ class Application:
         except:
             return False
 
+    def open_page(self, url): # открывает произвольную страницу, часть адреса которой, идущая после base_url, передается как аргумент
+        wd = self.wd
+        wd.get(self.base_url + url)
+
     def open_home_page(self):
         wd = self.wd
         wd.get(self.base_url)
         
-    def open_page(self, url): # открывает произвольную страницу, часть адреса которой, идущая после base_url, передается как аргумент 
-        wd = self.wd    
-        wd.get(self.base_url + url)
     def open_companies_page(self):
         wd = self.wd
         wd.get("%s/%s" % (self.base_url, "companies"))
