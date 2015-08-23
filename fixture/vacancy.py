@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait as wait
+from selenium.webdriver.support import expected_conditions as ec
 
 
 class Vacancy:
@@ -57,3 +59,15 @@ class VacancyHelper:
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@name='save']").click()
         wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))
+
+    def open_from_list(self, vacancy):
+        wd = self.app.wd
+        self.app.open_page("job")
+        wd.find_element_by_xpath("//a[.='%s']" % vacancy.title).click()
+        wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))
+
+    def respond(self):
+        wd = self.app.wd
+        wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("a.create-vacancy-response")).click()
+        wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.vacancy-response-popup span.btn__inner"))).click()
+        wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.response-sent")))
