@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.support.wait import WebDriverWait as wait
-from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 def test_resume_save_then_publish(app):
     wd = app.wd
-    app.open_page("login")
-    time.sleep(5)
-    app.login(username="123@guerrillamail.com", password="1111")
+    app.session.login_as(app.users["user1"])
     wait(wd, 60).until(lambda s: wd.find_element_by_xpath("//span[.='Создать резюме']"))
     wd.find_element_by_xpath("//span[.='Создать резюме']").click()
     wait(wd, 60).until(lambda s: wd.find_element_by_xpath("//input[@id='Resume_post']")) # вводим данные в форму резюме

@@ -10,9 +10,7 @@ from time import gmtime, strftime
 
 def test_user_can_post(app):
     wd = app.wd
-    app.open_page("login")
-    app.login(username="123@guerrillamail.com", password="1111")
-    
+    app.session.login_as(app.users["user1"])
     # --------- сообщение с видео -----------
     # если поставить последним в соответствии с номером вкладки - падает с Element Not Visible Exception
     app.open_page("comments/post/index/#tab03") 

@@ -9,8 +9,7 @@ from selenium.webdriver.support import expected_conditions as ec
 
 def test_user_can_create_event(app):
     wd = app.wd
-    app.open_page("login")
-    app.login(username="z947384@yandex.ru", password="111111")
+    app.session.login_as(app.users["user2"])
     app.open_page("events")
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//span[.='Создать событие']")).click()
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//span[@class='select2-chosen']")).click()
