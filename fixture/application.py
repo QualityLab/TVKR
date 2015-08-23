@@ -1,4 +1,5 @@
 from selenium import webdriver
+from fixture.user import User
 from .session import SessionHelper
 from .search import SearchHelper
 from .companies_search import CompanySearchHelper
@@ -21,6 +22,14 @@ class Application:
                 raise ValueError("Unrecognized browser %s" % browser)
         self.config = config
         self.base_url = config['web']['baseUrl']
+
+        self.users = {}
+        for key in config['users']:
+            self.users[key] = User(
+                username=config['users'][key]['username'],
+                password=config['users'][key]['password'],
+                real_name=config['users'][key]['real_name'])
+
         self.session = SessionHelper(self)
         self.search = SearchHelper(self)
         self.companies_search = CompanySearchHelper(self)
