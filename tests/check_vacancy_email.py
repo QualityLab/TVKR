@@ -15,8 +15,7 @@ def test_check_vacancy_email(app):
     app.vacancy.create_and_publish(vacancy)
 
     app.session.login_as(app.users["user2"])
-    app.vacancy.open_from_list(vacancy)
-    app.vacancy.respond()
+    app.vacancy.respond_to(vacancy)
 
     app.session.login_as(app.users["admin"])
     app.open_page("admin/emailQueue")
