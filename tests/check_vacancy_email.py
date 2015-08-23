@@ -10,7 +10,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 def test_check_vacancy_email(app):
     wd = app.wd
     actions = ActionChains(wd)
-    app.session.login_as(User(username="123@guerrillamail.com", password="1111", real_name="Сергей Петруненко"))
+    app.session.login_as(app.users["user1"])
     app.open_page("resume") # размещаем вакансию с известным нам e-mail для ответа
     wd.find_element_by_xpath("//span[.='Разместить вакансию']").click()
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//input[@id='Vacancy_name']"))
@@ -28,12 +28,12 @@ def test_check_vacancy_email(app):
     actions.move_to_element(button).perform()
     wd.find_element_by_xpath("//input[@class='btn btn_green btn_green_big']").click()
     wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))
-    app.session.login_as(User(username="z947384@yandex.ru", password="111111", real_name="Георгий Туманян"))
+    app.session.login_as(app.users["user2"])
     app.open_page("job")
     wd.find_element_by_xpath("//a[.='Тест создания вакансии']").click()
     wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("a.create-vacancy-response")).click()
     wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.vacancy-response-popup span.btn__inner"))).click()
     wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.response-sent")))
-    app.session.login_as(User(username="testtvkinoradio@gmail.com", password="test12", real_name="Test Test"))
+    app.session.login_as(app.users["admin"])
     app.open_page("admin/emailQueue")
     assert "vacancy_testing@mail.com" == wd.find_element_by_xpath("//tbody/tr[1]/td[4]").text
