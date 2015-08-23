@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.support.wait import WebDriverWait as wait
 import time, pytest
-from baseurl import Baseurl
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -27,4 +26,4 @@ def test_articles_dropdown_navigation(app, locator, url):
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath(str(locator)))
     wd.find_element_by_xpath(str(locator)).click()
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//h1"))
-    assert wd.current_url == str(Baseurl.baseurl) + url	
+    assert wd.current_url == app.base_url + url

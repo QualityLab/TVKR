@@ -2,6 +2,8 @@
 from time import gmtime, strftime
 from selenium.webdriver.support.wait import WebDriverWait as wait
 import time
+
+
 def test_articles_comment(app):
     wd = app.wd
     app.open_page("article/article4029-pravila-hudozhnika-po-grimu-marii-morzunovoj")

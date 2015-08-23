@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.action_chains import ActionChains
-import time, unittest
-from baseurl import Baseurl
-
 
     
 def test_AP_articles_list(app):
     wd = app.wd
-    app.open_page("login")
-    app.login(username="testtvkinoradio@gmail.com", password="test12")
+    app.session.login_as(app.users["admin"])
     app.open_page("admin/article/index")
     assert len(wd.find_elements_by_xpath("//h1[.='Статьи']")) != 0
     assert len(wd.find_elements_by_xpath("//th[@id='article-grid_c0']//a[.='#']")) != 0

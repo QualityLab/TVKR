@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.support.wait import WebDriverWait as wait
-import time, pytest
-from baseurl import Baseurl
+import pytest
 
 
 @pytest.mark.parametrize("locator,url", [
@@ -10,8 +9,7 @@ from baseurl import Baseurl
     ])
 def test_articles_navigation(app, locator, url):
     wd = app.wd
-    wd.get(str(Baseurl.baseurl) + "/article")
+    app.open_page("article")
     wd.find_element_by_xpath(str(locator)).click()
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//h1"))
-    assert wd.current_url == str(Baseurl.baseurl) + url
-    
+    assert wd.current_url == app.base_url + url
