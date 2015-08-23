@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from selenium.webdriver.common.by import By
-from fixture.user import User
 from selenium.webdriver.support.wait import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
