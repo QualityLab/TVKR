@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
+import time
 
 
 def test_check_vacancy_email(app):
@@ -11,9 +11,10 @@ def test_check_vacancy_email(app):
     actions = ActionChains(wd)
     app.session.login_as(app.users["user1"])
     app.open_page("resume") # размещаем вакансию с известным нам e-mail для ответа
+    title = "Тест создания вакансии %s" % int(time.time())
     wd.find_element_by_xpath("//span[.='Разместить вакансию']").click()
     wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//input[@id='Vacancy_name']"))
-    wd.find_element_by_xpath("//input[@id='Vacancy_name']").send_keys("Тест создания вакансии")
+    wd.find_element_by_xpath("//input[@id='Vacancy_name']").send_keys(title)
     wd.find_element_by_xpath("//span[@class='select2-chosen' and .='Проф. область']").click()
     wd.find_element_by_xpath("//div[@class='select2-result-label' and .='Кино']").click()
     wd.find_element_by_xpath("//span[@class='select2-chosen' and .='Специальность']").click()
@@ -29,7 +30,7 @@ def test_check_vacancy_email(app):
     wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))
     app.session.login_as(app.users["user2"])
     app.open_page("job")
-    wd.find_element_by_xpath("//a[.='Тест создания вакансии']").click()
+    wd.find_element_by_xpath("//a[.='%s']" % title).click()
     wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("a.create-vacancy-response")).click()
     wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.vacancy-response-popup span.btn__inner"))).click()
     wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.response-sent")))
