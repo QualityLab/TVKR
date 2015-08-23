@@ -1,6 +1,6 @@
 {
   "web": {
-    "baseUrl": "http://build_r_2015_8_14.build.tvkinoradio.itcreativoff.com/"
+    "baseUrl": "http://newver.tvkinoradio.ru/"
   },
   "users": {
     "admin": {"username": "testtvkinoradio@gmail.com", "password": "test12", "real_name": "Test Test"},
