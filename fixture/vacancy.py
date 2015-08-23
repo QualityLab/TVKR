@@ -71,3 +71,8 @@ class VacancyHelper:
         wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("a.create-vacancy-response")).click()
         wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.vacancy-response-popup span.btn__inner"))).click()
         wait(wd, 10).until(ec.visibility_of_element_located((By.CSS_SELECTOR, "div.response-sent")))
+
+    def get_all_published_titles(self):
+        wd = self.app.wd
+        self.app.open_page("job")
+        return [el.text for el in wd.find_elements_by_css_selector("div.items a")]

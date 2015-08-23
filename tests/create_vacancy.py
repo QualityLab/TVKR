@@ -16,15 +16,13 @@ def test_create_vacancy_flow(app):
     app.session.login_as(app.users["user1"])
     app.vacancy.create_and_save(vacancy)
 
-    app.open_page("job") # проверяем, что вакансия НЕ опубликована
-    assert vacancy.title != wd.find_element_by_xpath("//div[@class='items']/div[1]//a").text
+    assert vacancy.title not in app.vacancy.get_all_published_titles()
 
     app.open_page("profile") # публикуем
     wd.find_element_by_xpath("//div[@class='user-inf__vacancy line']//a[.='Опубликовать']").click()
     time.sleep(5)
 
-    app.open_page("job") # проверяем, что вакансия успешно опубликована
-    assert vacancy.title == wd.find_element_by_xpath("//div[@class='items']/div[1]//a").text
+    assert vacancy.title in app.vacancy.get_all_published_titles()
 
     app.open_page("profile") # восстанавливаем начальное состояние
     wd.find_element_by_xpath("//div[@class='user-inf__vacancy line']//a[.='Удалить']").click()
