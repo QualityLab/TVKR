@@ -1,8 +1,9 @@
 from selenium import webdriver
-from fixture.user import User
+from fixture.session import User
 from .session import SessionHelper
 from .search import SearchHelper
 from .companies_search import CompanySearchHelper
+from .vacancy import VacancyHelper
 from selenium.webdriver.support.wait import WebDriverWait as wait
 
 
@@ -32,6 +33,7 @@ class Application:
 
         self.session = SessionHelper(self)
         self.search = SearchHelper(self)
+        self.vacancy = VacancyHelper(self)
         self.companies_search = CompanySearchHelper(self)
 
         self.open_home_page()
@@ -68,5 +70,4 @@ class Application:
         wait(wd, 10).until(lambda s: wd.find_element_by_id('UserForm_email'))
         wd.find_element_by_id('UserForm_email').send_keys(username)
         wd.find_element_by_id('UserForm_password').send_keys(password)
-        wd.find_element_by_id('submit_link').click()        
-
+        wd.find_element_by_id('submit_link').click()
