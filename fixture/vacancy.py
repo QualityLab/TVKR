@@ -19,6 +19,16 @@ class VacancyHelper:
     def __init__(self, app):
         self.app = app
 
+    def create_and_publish(self, vacancy):
+        self.init_vacancy_creation()
+        self.fill_vacancy_form(vacancy)
+        self.publish()
+
+    def create_and_save(self, vacancy):
+        self.init_vacancy_creation()
+        self.fill_vacancy_form(vacancy)
+        self.save()
+
     def init_vacancy_creation(self):
         wd = self.app.wd
         self.app.open_page("resume")
@@ -37,3 +47,13 @@ class VacancyHelper:
         wd.find_element_by_xpath("//textarea[@id='Vacancy_smartDescription']").send_keys(vacancy.description)
         wd.find_element_by_xpath("//input[@id='Vacancy_email']").send_keys(vacancy.email)
         wd.find_element_by_xpath("//input[@id='Vacancy_company_name']").send_keys(vacancy.company)
+
+    def publish(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@name='publish']").click()
+        wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))
+
+    def save(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@name='save']").click()
+        wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))

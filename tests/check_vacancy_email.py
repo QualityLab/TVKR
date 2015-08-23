@@ -9,7 +9,6 @@ from fixture.vacancy import Vacancy
 
 def test_check_vacancy_email(app):
     wd = app.wd
-    actions = ActionChains(wd)
     vacancy = Vacancy(
         title="Тест создания вакансии %s" % int(time.time()),
         area="Кино", role="Агент", location="Амстердам",
@@ -17,13 +16,7 @@ def test_check_vacancy_email(app):
         email="vacancy_testing@mail.com", company="Sample Company")
 
     app.session.login_as(app.users["user1"])
-    app.vacancy.init_vacancy_creation()
-    app.vacancy.fill_vacancy_form(vacancy)
-
-    button = wd.find_element_by_xpath("//input[@class='btn btn_green btn_green_big']")
-    actions.move_to_element(button).perform()
-    wd.find_element_by_xpath("//input[@class='btn btn_green btn_green_big']").click()
-    wait(wd, 10).until(lambda s: wd.find_element_by_css_selector("div.vacancy"))
+    app.vacancy.create_and_publish(vacancy)
 
     app.session.login_as(app.users["user2"])
     app.open_page("job")
