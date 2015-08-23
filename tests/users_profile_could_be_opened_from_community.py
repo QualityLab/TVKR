@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.wait import WebDriverWait as wait
 import time, unittest
 from baseurl import Baseurl
 
@@ -21,6 +22,7 @@ class users_profile_could_be_opened_from_community(unittest.TestCase):
         wd = self.wd
         wd.get(str(Baseurl.baseurl) + "community")
         wd.find_element_by_link_text("Виктория Черепанова").click()
+        wait(wd, 10).until(lambda s: wd.current_url == str(Baseurl.baseurl) + "user/1849")
         self.assertTrue(success)
     
     def tearDown(self):

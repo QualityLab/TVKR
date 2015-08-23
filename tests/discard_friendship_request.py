@@ -20,15 +20,13 @@ class discard_friendship_request(unittest.TestCase):
         success = True
         wd = self.wd
         wd.get(str(Baseurl.baseurl) + "login")
-        wd.find_element_by_id("UserForm_email").click()
-        wd.find_element_by_id("UserForm_email").clear()
         wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com")
-        wd.find_element_by_id("UserForm_password").click()
-        wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("1111")
         wd.find_element_by_id("submit_link").click()
+        time.sleep(1)
         wd.get(str(Baseurl.baseurl) + "user/user/view?id=2596")
         wd.find_element_by_xpath("//div[@class='profile__meta-status']//span[.='Добавить в друзья']").click()
+        time.sleep(3)
         if not (len(wd.find_elements_by_xpath("//a[.='Олеся Подробная']")) != 0):
             success = False
             print("verifyElementPresent failed")
@@ -36,6 +34,7 @@ class discard_friendship_request(unittest.TestCase):
             success = False
             print("verifyTextPresent failed")
         wd.find_element_by_xpath("//a[.='Отменить']").click()
+        time.sleep(3)
         if not (len(wd.find_elements_by_xpath("//div[@class='cnt']//a[.='Мои заявки (0)']")) != 0):
             success = False
             print("verifyElementPresent failed")

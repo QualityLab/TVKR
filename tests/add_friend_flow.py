@@ -20,11 +20,7 @@ class add_friend_flow(unittest.TestCase):
         success = True
         wd = self.wd
         wd.get(str(Baseurl.baseurl) + "login")
-        wd.find_element_by_id("UserForm_email").click()
-        wd.find_element_by_id("UserForm_email").clear()
         wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com")
-        wd.find_element_by_id("UserForm_password").click()
-        wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("1111")
         wd.find_element_by_id("submit_link").click()
         wd.get(str(Baseurl.baseurl) + "user/user/view?id=2596")
@@ -52,6 +48,14 @@ class add_friend_flow(unittest.TestCase):
             success = False
             print("verifyElementPresent failed")
         self.assertTrue(success)
+        wd.find_element_by_css_selector("a.account__exit.large-screen").click() #возвращаем систему в исходное состояние - отменяем заявку
+        wd.get(str(Baseurl.baseurl) + "login")
+        wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com")
+        wd.find_element_by_id("UserForm_password").send_keys("1111")
+        wd.find_element_by_id("submit_link").click()
+        wd.get(str(Baseurl.baseurl) + "user/friends/list#tab03")
+        wd.find_element_by_xpath("//a[.='Отменить']").click()
+        time.sleep(2)
     
     def tearDown(self):
         self.wd.quit()

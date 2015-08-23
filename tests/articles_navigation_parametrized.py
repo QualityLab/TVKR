@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
-import pytest
 from selenium.webdriver.support.wait import WebDriverWait as wait
+import time, pytest
+from baseurl import Baseurl
 
 
-@pytest.mark.parametrize("link_text,url", [
-    ("Обзоры", "article/category2"),
-    ("Мнение", "article/category7"),
-])
-def test_articles_navigation(app, link_text, url):
+@pytest.mark.parametrize("locator,url", [
+        ("//ul[@id='yw0']//a[.='Обзоры']", "article/category2"),
+        ("//ul[@id='yw0']//a[.='Мнение']", "article/category7")
+    ])
+def test_articles_navigation(app, locator, url):
     wd = app.wd
-    app.open_page("article")
-    wd.find_element_by_xpath("//ul[@id='yw0']//a[.='%s']" % link_text).click()
-    wait(wd, 10).until(lambda s: wd.current_url == app.base_url + url)
+    wd.get(str(Baseurl.baseurl) + "/article")
+    wd.find_element_by_xpath(str(locator)).click()
+    wait(wd, 10).until(lambda s: wd.find_element_by_xpath("//h1"))
+    assert wd.current_url == str(Baseurl.baseurl) + url
+    

@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 import pytest
+import time
 
 
 @pytest.mark.parametrize("query", [
     ("Neumann"),
     ("кинокамера"),
-    ("объектив canon"),
+    ("компания Sony"),
 ])
 def test_search_positiff(app, query):
     app.open_home_page()
     app.search.find(query)
+    time.sleep(3)
     assert app.search.get_result_count() > 0
     assert query in app.search.get_all_results_text()
 
@@ -23,6 +25,7 @@ def test_search_positiff(app, query):
 def test_search_by_query_string_of_various_length(app, query, expected):
     app.open_home_page()
     app.search.find(query)
+    time.sleep(3)
     assert app.search.get_result_message().startswith(expected)
 
 
@@ -33,6 +36,7 @@ def test_search_by_query_string_of_various_length(app, query, expected):
 def test_search_in_wrong_encoding(app, query, expected):
     app.open_home_page()
     app.search.find(query)
+    time.sleep(3)
     assert app.search.get_result_message().startswith(expected)
 
 
@@ -48,9 +52,9 @@ def test_search_in_wrong_encoding(app, query, expected):
 def test_search_by_patterns(app, query, expected):
     app.open_home_page()
     app.search.find(query)
+    time.sleep(3)
     assert app.search.get_result_count() > 0
     assert expected in app.search.get_all_results_text()
-
 
 @pytest.mark.parametrize("query1,query2", [
     ("оборудование", "ОБОРУДОВАНИЕ"),
@@ -63,8 +67,10 @@ def test_search_by_patterns(app, query, expected):
 def test_search_is_case_insensitive_and_order_independent_and_yo(app, query1, query2):
     app.open_home_page()
     app.search.find(query1)
+    time.sleep(2)
     res1 = app.search.get_result_count()
     app.search.find(query2)
+    time.sleep(2)
     res2 = app.search.get_result_count()
     assert res1 > 0
     assert res1 == res2

@@ -20,15 +20,11 @@ class users_profile_is_properly_displayed(unittest.TestCase):
     def test_users_profile_is_properly_displayed(self):
         success = True
         wd = self.wd
-        wd.get(str(Baseurl.baseurl))
-        wd.find_element_by_link_text("Войти").click()
-        wd.find_element_by_id("UserForm_email").click()
-        wd.find_element_by_id("UserForm_email").clear()
+        wd.get(str(Baseurl.baseurl) + "login")
         wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com")
-        wd.find_element_by_id("UserForm_password").click()
-        wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("1111")
         wd.find_element_by_id("submit_link").click()
+        time.sleep(5)
         if not (len(wd.find_elements_by_css_selector("div.company-box__photo > img")) != 0):
             success = False
             print("verifyElementPresent failed")

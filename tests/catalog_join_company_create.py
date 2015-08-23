@@ -3,6 +3,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
 from baseurl import Baseurl
+# перевести на pytest и на юзера, у которого не может появиться тестовой компании
 
 def is_alert_present(wd):
     try:

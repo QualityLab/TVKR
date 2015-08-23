@@ -23,6 +23,7 @@ class catalog_join_registration(unittest.TestCase):
         wd.find_element_by_link_text("Присоединяйтесь").click()
         wd.find_element_by_id("registration_button").click()
         wd.find_element_by_xpath("//div[@id='loginPopup']//span[.='Зарегистрироваться']").click()
+        time.sleep(3)
         if wd.current_url != str(Baseurl.baseurl) + "signup?referer=join":
             success = False
             print("verifyCurrentUrl failed")

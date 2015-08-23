@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.wait import WebDriverWait as wait
 import time, unittest
 from baseurl import Baseurl
 
@@ -51,9 +52,7 @@ class video_album_create_edit_delete(unittest.TestCase):
             print("verifyText failed")
         wd.find_element_by_css_selector("div.form__del > label").click()
         wd.find_element_by_css_selector("button.btn.btn_green").click()
-        if not ("Ни одно видео еще не было загружено." in wd.find_element_by_tag_name("html").text):
-            success = False
-            print("verifyTextPresent failed")
+        wait(wd, 30).until(lambda s: "Ни одно видео еще не было загружено." in wd.find_element_by_xpath("//div[@class='company-box__section']//p").text)
         self.assertTrue(success)
     
     def tearDown(self):

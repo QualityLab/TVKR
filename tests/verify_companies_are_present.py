@@ -23,12 +23,12 @@ class verify_companies_are_present(unittest.TestCase):
         wd.find_element_by_link_text("Войти").click()
         wd.find_element_by_id("UserForm_email").click()
         wd.find_element_by_id("UserForm_email").clear()
-        wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com")
+        wd.find_element_by_id("UserForm_email").send_keys("123@guerrillamail.com") #переделать на Туманяна
         wd.find_element_by_id("UserForm_password").click()
         wd.find_element_by_id("UserForm_password").clear()
         wd.find_element_by_id("UserForm_password").send_keys("1111")
         wd.find_element_by_id("submit_link").click()
-        if not (len(wd.find_elements_by_link_text("Petroholdings")) != 0):
+        if not (len(wd.find_elements_by_link_text("Petroholding")) != 0):
             success = False
             print("verifyElementPresent failed")
         self.assertTrue(success)
