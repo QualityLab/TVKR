@@ -6,12 +6,12 @@ import time
 def test_create_vacancy_flow(app):
     wd = app.wd
     actions = ActionChains(wd)
+    app.session.login_as(app.users["user1"])
     app.open_page("resume")
+    title = "Тест создания вакансии %s" % int(time.time())
     wd.find_element_by_xpath("//span[.='Разместить вакансию']").click()
-    time.sleep(5)
-    app.login(username="123@guerrillamail.com", password="1111")
     wait(wd, 60).until(lambda s: wd.find_element_by_xpath("//input[@id='Vacancy_name']"))
-    wd.find_element_by_xpath("//input[@id='Vacancy_name']").send_keys("Тест создания вакансии")
+    wd.find_element_by_xpath("//input[@id='Vacancy_name']").send_keys(title)
     wd.find_element_by_xpath("//span[@class='select2-chosen' and .='Проф. область']").click()
     wd.find_element_by_xpath("//div[@class='select2-result-label' and .='Кино']").click()
     wd.find_element_by_xpath("//span[@class='select2-chosen' and .='Специальность']").click()
@@ -26,18 +26,12 @@ def test_create_vacancy_flow(app):
     wd.find_element_by_xpath("//input[@name='save']").click()
     time.sleep(5) # даем возможность отправиться данным на сервер, без этого ожидания фэйлится
     app.open_page("job") # проверяем, что вакансия НЕ опубликована
-    assert "Тест создания вакансии" != wd.find_element_by_xpath("//div[@class='items']/div[1]//a").text
+    assert title != wd.find_element_by_xpath("//div[@class='items']/div[1]//a").text
     app.open_page("profile") # публикуем
     wd.find_element_by_xpath("//div[@class='user-inf__vacancy line']//a[.='Опубликовать']").click()
     time.sleep(5)
     app.open_page("job") # проверяем, что вакансия успешно опубликована
-    assert "Тест создания вакансии" == wd.find_element_by_xpath("//div[@class='items']/div[1]//a").text
+    assert title == wd.find_element_by_xpath("//div[@class='items']/div[1]//a").text
     app.open_page("profile") # восстанавливаем начальное состояние
     wd.find_element_by_xpath("//div[@class='user-inf__vacancy line']//a[.='Удалить']").click()
     time.sleep(5)
-    
-    
-    
-    
-	
-    
