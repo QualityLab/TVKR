@@ -4,10 +4,11 @@ from selenium.webdriver.support.wait import WebDriverWait as wait
 
 class User:
 
-    def __init__(self, username, password, real_name):
+    def __init__(self, username, password, real_name, role):
         self.username = username
         self.password = password
         self.real_name = real_name
+        self.role = role
 
 
 class SessionHelper:
@@ -35,11 +36,14 @@ class SessionHelper:
             self.logout()
 
     def is_logged_in(self):
-        return len(self.app.wd.find_elements_by_css_selector("div.account__info")) > 0
+        return len(self.app.wd.find_elements_by_css_selector("div.account__info")) > 0\
+            or len(self.app.wd.find_elements_by_css_selector("a[href='/admin/systemInfo/index']")) > 0
 
     def is_logged_in_as(self, user):
         wd = self.app.wd
-        return self.app.wd.find_element_by_css_selector(".account__name").text == user.real_name
+        account_info = self.app.wd.find_elements_by_css_selector("div.account__info")
+        return (len(account_info) > 0 and account_info[0].text == user.real_name)\
+            or (user.role == "admin" and len(self.app.wd.find_elements_by_css_selector("a[href='/admin/systemInfo/index']")) > 0)
 
     def logout(self):
         wd = self.app.wd

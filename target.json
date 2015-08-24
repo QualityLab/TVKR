@@ -1,13 +1,13 @@
 {
   "web": {
-    "baseUrl": "http://newver.tvkinoradio.ru/"
+    "baseUrl": "http://build_r_2015_8_14.build.tvkinoradio.itcreativoff.com/"
   },
   "users": {
-    "admin": {"username": "testtvkinoradio@gmail.com", "password": "test12", "real_name": "Test Test"},
-    "content_manager": {"username": "", "password": "", "real_name": ""},
-    "user1": {"username": "123@guerrillamail.com", "password": "1111", "real_name": "Сергей Петруненко"},
-    "user2": {"username": "z947384@yandex.ru", "password": "111111", "real_name": "Георгий Туманян"},
-    "user3": {"username": "", "password": "", "real_name": ""},
-    "user4": {"username": "", "password": "", "real_name": ""}
+    "admin": {"username": "testtvkinoradio@gmail.com", "password": "test12", "real_name": "Test Test", "role": "admin"},
+    "content_manager": {"username": "", "password": "", "real_name": "", "role": "content_manager"},
+    "user1": {"username": "123@guerrillamail.com", "password": "1111", "real_name": "Сергей Петруненко", "role": "user"},
+    "user2": {"username": "z947384@yandex.ru", "password": "111111", "real_name": "Георгий Туманян", "role": "user"},
+    "user3": {"username": "", "password": "", "real_name": "", "role": "user"},
+    "user4": {"username": "", "password": "", "real_name": "", "role": "user"}
   }
 }

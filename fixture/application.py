@@ -29,7 +29,8 @@ class Application:
             self.users[key] = User(
                 username=config['users'][key]['username'],
                 password=config['users'][key]['password'],
-                real_name=config['users'][key]['real_name'])
+                real_name=config['users'][key]['real_name'],
+                role=config['users'][key]['role'])
 
         self.session = SessionHelper(self)
         self.search = SearchHelper(self)
