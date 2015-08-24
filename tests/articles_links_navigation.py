@@ -14,7 +14,7 @@ from selenium.webdriver.common.action_chains import ActionChains
         ("//ul[@id='main-menu']//a[.='Репортаж']", "article/12/list"),
         ("//ul[@id='main-menu']//a[.='Инфографика']", "article/13/list"),
         ("//ul[@id='main-menu']//a[.='Правила профессии']", "article/16/list"),
-        ("//ul[@id='main-menu']//a[.='Тест']", "article/17/list"),
+        #("//ul[@id='main-menu']//a[.='Тест']", "article/17/list"),
     ])
 def test_articles_dropdown_navigation(app, locator, url):
     wd = app.wd
